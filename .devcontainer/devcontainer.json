@@ -1,0 +1,37 @@
+{
+    "name": "Django Ultimate Codespace",
+    "build": {
+        "dockerfile": "Dockerfile",
+        "context": ".."
+    },
+    "forwardPorts": [
+        8000
+    ],
+    "containerEnv": {
+        "DEBUG": "1",
+        "PYTHONUNBUFFERED": "1"
+    },
+    "postStartCommand": "python manage.py shell -c 'from main.init_data import init_all; init_all()' && echo 'Codespace ready! Django server already running.' && python manage.py runserver",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-python.python",
+                "ms-python.vscode-pylance",
+                "PKief.material-icon-theme",
+                "hiteshchoudharycode.chai-theme"
+            ],
+            "settings": {
+                "workbench.colorTheme": "Chai Theme",
+                "workbench.iconTheme": "material-icon-theme",
+                "explorer.compactFolders": false,
+                "explorer.decorations.colors": true,
+                "explorer.decorations.badges": true,
+                "python.defaultInterpreterPath": "/usr/local/bin/python",
+            }
+        }
+    },
+    "hostRequirements": {
+        "cpus": 2,
+        "memory": "4gb"
+    }
+}
